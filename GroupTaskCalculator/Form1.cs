@@ -43,7 +43,7 @@ namespace GroupTaskCalculator
 
         bool IsControl(char c)
         {
-            return char.IsControl(c) || new[] { '-', ',', ' ' }.Contains(c);
+            return char.IsControl(c) || new[] { '-', ',', ' ', '.' }.Contains(c);
         }
 
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -107,7 +107,15 @@ namespace GroupTaskCalculator
 
         private void DoAction_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                var p = new Calc((int)InitialNS.SelectedItem,(int)DestinationNS.SelectedItem,InitialNumber.Text);
+                DestinationNumber.Text = p.Convert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void DestinationNS_SelectedIndexChanged(object sender, EventArgs e)

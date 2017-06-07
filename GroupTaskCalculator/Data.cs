@@ -2,7 +2,7 @@
 
 namespace GroupTaskCalculator
 {
-    class Data
+    public class Data
     {
         private static string alph = "0123456789ABCDEF";
         private readonly string value;
@@ -39,7 +39,7 @@ namespace GroupTaskCalculator
 
             for (int i = 0; i < secondPart.Length; i++)
             {
-                int val = alph.IndexOf(firstPart[i]);
+                double val = alph.IndexOf(secondPart[i]);
                 outputValue += val * Math.Pow(inputValue.numSystem, -1*(i+1));
             }
 
@@ -53,9 +53,11 @@ namespace GroupTaskCalculator
             string outputStringIntPart="";
             while (intPart>=inputValue.numSystem)
             {
-                outputStringIntPart += alph[intPart% outputCC];
+                outputStringIntPart = alph[intPart% outputCC]+outputStringIntPart;
                 intPart /= outputCC;
             }
+
+            outputStringIntPart = intPart + outputStringIntPart;
             outputStringIntPart = outputStringIntPart.TrimStart('0');
 
 
@@ -63,11 +65,12 @@ namespace GroupTaskCalculator
             while (doublePart != 0.0 && outputStringdoublePart.Length<10 )
             {
                 doublePart *= outputCC;
-                outputStringIntPart += alph[(int)doublePart];
+                outputStringdoublePart += alph[(int)doublePart];
                 doublePart -= (int) doublePart;
             }
             outputStringdoublePart = outputStringdoublePart.TrimEnd('0');
-
+            if (outputStringIntPart == "")
+                outputStringIntPart += 0;
             string outputString= outputStringIntPart;
             if (outputStringdoublePart.Length != 0) outputString += "," + outputStringdoublePart;
 
