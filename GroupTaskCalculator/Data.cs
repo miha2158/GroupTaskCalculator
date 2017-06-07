@@ -18,6 +18,7 @@ namespace GroupTaskCalculator
 
         public static Data Convert(Data inputValue, int outputCC)
         {
+            string sign= inputValue.Value[0] == '-'?"-":"";
             string firstPart = "";
             string secondPart = "";
             if (inputValue.value.IndexOf(",") > 0)
@@ -26,10 +27,10 @@ namespace GroupTaskCalculator
                 secondPart = inputValue.value.Substring(inputValue.value.IndexOf(",") + 1);
             }
             else firstPart = inputValue.value;
-            
+            firstPart = firstPart.Trim('-');
             double outputValue=0;
 
-            #region Первод в десятичную
+            #region Перевод в десятичную
 
             for (int i = 0; i < firstPart.Length; i++)
             {
@@ -43,15 +44,15 @@ namespace GroupTaskCalculator
                 outputValue += val * Math.Pow(inputValue.numSystem, -1*(i+1));
             }
 
-            #endregion Первод в десятичную
+            #endregion Перевод в десятичную
 
             #region Перевод в target систему
 
-            int intPart=(int)outputValue;
+            int intPart =(int)outputValue;
             double doublePart = outputValue - intPart;
 
             string outputStringIntPart="";
-            while (intPart>=inputValue.numSystem)
+            while (intPart>= outputCC)
             {
                 outputStringIntPart = alph[intPart% outputCC]+outputStringIntPart;
                 intPart /= outputCC;
@@ -76,7 +77,7 @@ namespace GroupTaskCalculator
 
             #endregion Перевод в target систему
             
-            return new Data(outputString, outputCC);
+            return new Data(sign+outputString, outputCC);
         }
     }
 }

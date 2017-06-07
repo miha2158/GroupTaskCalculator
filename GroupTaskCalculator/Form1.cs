@@ -48,7 +48,8 @@ namespace GroupTaskCalculator
 
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch (InitialNS.SelectedItem)
+            if (InitialNS.SelectedItem == null) return;
+            switch ((int)InitialNS.SelectedItem)
             {
                 case 2:
                 {
