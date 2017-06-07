@@ -41,27 +41,32 @@ namespace GroupTaskCalculator
             }
         }
 
+        bool IsControl(char c)
+        {
+            return char.IsControl(c) || new[] { '-', ',', ' ' }.Contains(c);
+        }
+
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             switch (InitialNS.SelectedItem)
             {
                 case 2:
                 {
-                    if (!(new[] { '0', '1', '-', ',', ' ' }.Contains(e.KeyChar) || char.IsControl(e.KeyChar)))
+                    if (!(new[] { '0', '1' }.Contains(e.KeyChar) || IsControl(e.KeyChar)))
                         e.Handled = true;
                 }
                 break;
 
                 case 3:
                 {
-                    if (!(new[] { '0', '1', '2', '-', ',',' ' }.Contains(e.KeyChar) || char.IsControl(e.KeyChar)))
+                    if (!(new[] { '0', '1', '2' }.Contains(e.KeyChar) || IsControl(e.KeyChar)))
                         e.Handled = true;
                 }
                 break;
 
                 case 8:
                 {
-                    if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar) || new[] { '-', ',', ' ' }.Contains(e.KeyChar)))
+                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar)))
                         e.Handled = true;
                     else
                         if (new[] { '8', '9' }.Contains(e.KeyChar))
@@ -71,7 +76,7 @@ namespace GroupTaskCalculator
 
                 case 9:
                 {
-                    if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar) || new[] { '-', ',', ' ' }.Contains(e.KeyChar)))
+                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar)))
                         e.Handled = true;
                     else
                         if (e.KeyChar == '9')
@@ -81,14 +86,14 @@ namespace GroupTaskCalculator
 
                 case 10:
                 {
-                    if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar) || new[] { '-', ',', ' ' }.Contains(e.KeyChar)))
+                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar)))
                         e.Handled = true;
                 }
                 break;
 
                 case 16:
                 {
-                    if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar) || new[] { '-', ' ', ',','a','b','c','d','e','f' }.Contains(e.KeyChar.ToString().ToLower()[0])))
+                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar) || new[] { 'a','b','c','d','e','f' }.Contains(e.KeyChar.ToString().ToLower()[0])))
                         e.Handled = true;
                 }
                 break;
