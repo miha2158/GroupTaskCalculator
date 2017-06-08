@@ -37,7 +37,7 @@ namespace GroupTaskCalculator
             this.InitialNS.Name = "InitialNS";
             this.InitialNS.Size = new System.Drawing.Size(140, 25);
             this.InitialNS.TabIndex = 0;
-            this.InitialNS.SelectedIndexChanged += new System.EventHandler(this.InitialNS_SelectedIndexChanged);
+            this.InitialNS.SelectedIndexChanged += new System.EventHandler(this.NS_Selected);
             // 
             // DestinationNS
             // 
@@ -48,7 +48,7 @@ namespace GroupTaskCalculator
             this.DestinationNS.Name = "DestinationNS";
             this.DestinationNS.Size = new System.Drawing.Size(140, 25);
             this.DestinationNS.TabIndex = 1;
-            this.DestinationNS.SelectedIndexChanged += new System.EventHandler(this.DestinationNS_SelectedIndexChanged);
+            this.DestinationNS.SelectedIndexChanged += new System.EventHandler(this.NS_Selected);
             // 
             // InitialNumber
             // 

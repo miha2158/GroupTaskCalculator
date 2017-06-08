@@ -77,6 +77,8 @@ namespace GroupTaskCalculator
 
             #endregion Перевод в target систему
             
+            if(sign + outputString == "-0")
+                return new Data("0", outputCC);
             return new Data(sign+outputString, outputCC);
         }
     }
