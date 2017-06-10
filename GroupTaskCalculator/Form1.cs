@@ -15,7 +15,7 @@ namespace GroupTaskCalculator
     public partial class Form1: Form
     {
         private static object[] PossibleNS0 = { 2, 3, 8, 9, 10, 16 };
-        private static object[] PossibleNS1 = new object[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+        private static object[] PossibleNS1 = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
         public Form1()
         {
             InitializeComponent();
@@ -51,10 +51,11 @@ namespace GroupTaskCalculator
         }
 
         private static char[] cChars = new[] { '-', ',', ' ', '.' };
-        private static string Numbers = "0123456789abcdef";
+        private static string Nums = "0123456789abcdef";
         bool IsValid(char c, int NS)
         {
-            return Numbers.IndexOf(c.ToString().ToLower()[0]) < NS || char.IsControl(c) || cChars.Contains(c);
+            char cc = c.ToString().ToLower()[0];
+            return (Nums.IndexOf(cc) != -1 && Nums.IndexOf(cc) < NS) || char.IsControl(cc) || cChars.Contains(cc);
         }
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
