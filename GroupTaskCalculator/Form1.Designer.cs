@@ -26,13 +26,14 @@ namespace GroupTaskCalculator
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DoAction = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // InitialNS
             // 
             this.InitialNS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InitialNS.FormattingEnabled = true;
-            this.InitialNS.Location = new System.Drawing.Point(14, 38);
+            this.InitialNS.Location = new System.Drawing.Point(14, 30);
             this.InitialNS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InitialNS.Name = "InitialNS";
             this.InitialNS.Size = new System.Drawing.Size(140, 25);
@@ -43,7 +44,7 @@ namespace GroupTaskCalculator
             // 
             this.DestinationNS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DestinationNS.FormattingEnabled = true;
-            this.DestinationNS.Location = new System.Drawing.Point(14, 116);
+            this.DestinationNS.Location = new System.Drawing.Point(14, 108);
             this.DestinationNS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DestinationNS.Name = "DestinationNS";
             this.DestinationNS.Size = new System.Drawing.Size(140, 25);
@@ -52,7 +53,7 @@ namespace GroupTaskCalculator
             // 
             // InitialNumber
             // 
-            this.InitialNumber.Location = new System.Drawing.Point(167, 38);
+            this.InitialNumber.Location = new System.Drawing.Point(167, 30);
             this.InitialNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InitialNumber.Multiline = true;
             this.InitialNumber.Name = "InitialNumber";
@@ -64,7 +65,7 @@ namespace GroupTaskCalculator
             // 
             // DestinationNumber
             // 
-            this.DestinationNumber.Location = new System.Drawing.Point(17, 211);
+            this.DestinationNumber.Location = new System.Drawing.Point(17, 205);
             this.DestinationNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DestinationNumber.Multiline = true;
             this.DestinationNumber.Name = "DestinationNumber";
@@ -76,7 +77,7 @@ namespace GroupTaskCalculator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Location = new System.Drawing.Point(14, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 17);
             this.label1.TabIndex = 4;
@@ -85,7 +86,7 @@ namespace GroupTaskCalculator
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 67);
+            this.label2.Location = new System.Drawing.Point(14, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 17);
             this.label2.TabIndex = 5;
@@ -94,7 +95,7 @@ namespace GroupTaskCalculator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 145);
+            this.label3.Location = new System.Drawing.Point(14, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 17);
             this.label3.TabIndex = 6;
@@ -103,7 +104,7 @@ namespace GroupTaskCalculator
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 95);
+            this.label4.Location = new System.Drawing.Point(14, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 17);
             this.label4.TabIndex = 7;
@@ -112,7 +113,7 @@ namespace GroupTaskCalculator
             // DoAction
             // 
             this.DoAction.Enabled = false;
-            this.DoAction.Location = new System.Drawing.Point(17, 166);
+            this.DoAction.Location = new System.Drawing.Point(17, 161);
             this.DoAction.Name = "DoAction";
             this.DoAction.Size = new System.Drawing.Size(539, 38);
             this.DoAction.TabIndex = 8;
@@ -120,11 +121,21 @@ namespace GroupTaskCalculator
             this.DoAction.UseVisualStyleBackColor = true;
             this.DoAction.Click += new System.EventHandler(this.DoAction_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(300, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(256, 17);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Точность ~ 10 знаков после запятой";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(568, 351);
+            this.ClientSize = new System.Drawing.Size(568, 345);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.DoAction);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -153,6 +164,7 @@ namespace GroupTaskCalculator
         private Label label3;
         private Label label4;
         private Button DoAction;
+        private Label label5;
     }
 }
 
