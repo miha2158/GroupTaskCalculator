@@ -15,7 +15,7 @@ namespace GroupTaskCalculator
     public partial class Form1: Form
     {
         private static object[] PossibleNS0 = { 2, 3, 8, 9, 10, 16 };
-        private static object[] PossibleNS1 = new object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+        private static object[] PossibleNS1 = new object[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
         public Form1()
         {
             InitializeComponent();
