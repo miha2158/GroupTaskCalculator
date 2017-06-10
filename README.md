@@ -1,9 +1,9 @@
 # Калькулятор для перевода чисел в различные системы счисления
 
 ### Участники (Студенты НИУ ВШЭ-Пермь ПИ-16-1 гр.1):
-* Иванов Михаил 
-* Валеев Марат  
-* Липин Вячеслав
+* [Иванов Михаил](https://github.com/miha2158)
+* [Валеев Марат](https://github.com/ValeevMarat)
+* [Липин Вячеслав](https://github.com/Kompoman32)
 
 ### Описание
 Данная программа позволяет переводить числа из одной системы счисления в другую.  
@@ -23,5 +23,4 @@ Controller (класс Calc) - интерпретирует действия п�
 Программа выполнена с помощью Windows Form на языке C#
 ### GitHub Участников:
 
-<img src="https://i.imgur.com/ZFyLTQE.png" width="100" height="100"  alt="Miha" /> <img src="http://i.imgur.com/4CzwbSm.jpg" width="100" height="100"  alt="Marat" /> <img src="http://i.imgur.com/70yHAIO.png" width="100" height="100"  alt="Slava" />   
-[Миша](https://github.com/miha2158)  [Марат](https://github.com/ValeevMarat)  [Слава](https://github.com/Kompoman32)   
+<a href="https://github.com/miha2158" title="Михаил"><img src="https://i.imgur.com/ZFyLTQE.png" width="100" height="100"  alt="miha2158" /></a> <a href ="https://github.com/ValeevMarat" title="Марат"><img src="http://i.imgur.com/4CzwbSm.jpg" width="100" height="100"  alt="ValeevMarat" /></a> <a href="https://github.com/Kompoman32" title="Слава"><img src="http://i.imgur.com/70yHAIO.png" width="100" height="100"  alt="Kompoman32" /></a>
