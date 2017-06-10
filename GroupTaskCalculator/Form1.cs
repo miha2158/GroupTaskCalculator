@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,13 @@ namespace GroupTaskCalculator
 {
     public partial class Form1: Form
     {
-        private static readonly object[] PossibleNS = { 2, 3, 8, 9, 10, 16 };
+        private static object[] PossibleNS0 = { 2, 3, 8, 9, 10, 16 };
+        private static object[] PossibleNS1 = new object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
         public Form1()
         {
             InitializeComponent();
-            InitialNS.Items.AddRange(PossibleNS);
-            DestinationNS.Items.AddRange(PossibleNS);
+            InitialNS.Items.AddRange(PossibleNS0);
+            DestinationNS.Items.AddRange(PossibleNS0);
             InitialNumber.KeyPress += InitialNumber_KeyPress;
         }
         private static readonly string log = "programme.log.txt";
@@ -47,65 +49,21 @@ namespace GroupTaskCalculator
             {
             }
         }
-        bool IsControl(char c)
+
+        private static char[] cChars = new[] { '-', ',', ' ', '.' };
+        private static string Numbers = "0123456789abcdef";
+        bool IsValid(char c, int NS)
         {
-            return char.IsControl(c) || new[] { '-', ',', ' ', '.' }.Contains(c);
+            return Numbers.IndexOf(c.ToString().ToLower()[0]) < NS || char.IsControl(c) || cChars.Contains(c);
         }
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (InitialNS.SelectedItem == null)
                 return;
 
-            switch ((int)InitialNS.SelectedItem)
-            {
-                case 2:
-                {
-                    if (!(new[] { '0', '1' }.Contains(e.KeyChar) || IsControl(e.KeyChar)))
-                        e.Handled = true;
-                }
-                    break;
+            if (!IsValid(e.KeyChar, (int)InitialNS.SelectedItem))
+                e.Handled = true;
 
-                case 3:
-                {
-                    if (!(new[] { '0', '1', '2' }.Contains(e.KeyChar) || IsControl(e.KeyChar)))
-                        e.Handled = true;
-                }
-                    break;
-
-                case 8:
-                {
-                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar)))
-                        e.Handled = true;
-                    else if (new[] { '8', '9' }.Contains(e.KeyChar))
-                        e.Handled = true;
-                }
-                    break;
-
-                case 9:
-                {
-                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar)))
-                        e.Handled = true;
-                    else if (e.KeyChar == '9')
-                        e.Handled = true;
-                }
-                    break;
-
-                case 10:
-                {
-                    if (!(char.IsDigit(e.KeyChar) || IsControl(e.KeyChar)))
-                        e.Handled = true;
-                }
-                    break;
-
-                case 16:
-                {
-                    if (!(char.IsDigit(e.KeyChar)
-                          || IsControl(e.KeyChar)
-                          || new[] { 'a', 'b', 'c', 'd', 'e', 'f' }.Contains(e.KeyChar.ToString().ToLower()[0])))
-                        e.Handled = true;
-                }
-                    break;
-            }
 
             if (e.KeyChar == (char)ConsoleKey.Enter)
             {
@@ -113,7 +71,7 @@ namespace GroupTaskCalculator
                 DoAction_Click(sender, e);
             }
         }
-        
+
         private void NS_Selected(object sender, EventArgs e)
         {
             if (InitialNS.SelectedIndex != -1 && DestinationNS.SelectedIndex != -1)
@@ -159,10 +117,25 @@ namespace GroupTaskCalculator
         }
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new OpenFileDialog()
-            {
-                FileName = logpath
-            }.OpenFile();
+            var proc = new Process();
+            proc.StartInfo = new ProcessStartInfo(logpath);
+            proc.Start();
+        }
+
+        private void ChangeItems(object[] items)
+        {
+            InitialNS.Items.Clear();
+            InitialNS.Items.AddRange(items);
+            DestinationNS.Items.Clear();
+            DestinationNS.Items.AddRange(items);
+        }
+        private void superModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeItems(PossibleNS1);
+        }
+        private void regularModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeItems(PossibleNS1);
         }
     }
 }
