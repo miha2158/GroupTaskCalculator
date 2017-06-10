@@ -23,5 +23,5 @@ Controller (класс Calc) - интерпретирует действия п�
 Программа выполнена с помощью Windows Form на языке C#
 ### GitHub Участников:
 
-<img src="http://i.imgur.com/iNCUxQc.jpg" width="100" height="100"  alt="Miha" /> <img src="http://i.imgur.com/4CzwbSm.jpg" width="100" height="100"  alt="Marat" /> <img src="http://i.imgur.com/70yHAIO.png" width="100" height="100"  alt="Slava" />   
-[Миша GitHub](https://github.com/miha2158)  [Марат GitHub](https://github.com/ValeevMarat)  [Слава GitHub](https://github.com/Kompoman32)   
+<img src="https://i.imgur.com/ZFyLTQE.png" width="100" height="100"  alt="Miha" /> <img src="http://i.imgur.com/4CzwbSm.jpg" width="100" height="100"  alt="Marat" /> <img src="http://i.imgur.com/70yHAIO.png" width="100" height="100"  alt="Slava" />   
+[Миша](https://github.com/miha2158)  [Марат](https://github.com/ValeevMarat)  [Слава](https://github.com/Kompoman32)   
