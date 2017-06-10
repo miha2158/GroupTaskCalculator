@@ -13,6 +13,7 @@ namespace GroupTaskCalculator
 {
     public partial class Form1: Form
     {
+        bool logged = false;
         public Form1()
         {
             InitializeComponent();
@@ -111,7 +112,12 @@ namespace GroupTaskCalculator
                 fs.Position = fs.Length;
                 using (var w = new StreamWriter(fs, Encoding.Unicode))
                 {
-                    w.WriteLine("\n");
+                    if (!logged)
+                    {
+                        logged = true;
+                        w.WriteLine("========== "+DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt")+" ==========");
+                    }
+                    w.WriteLine("--- "+ DateTime.Now.ToString("hh:mm:ss tt") + " ---");
                     w.WriteLine("Input Number: {0}", InitialNumber.Text);
                     w.WriteLine("Input Number System: {0}", InitialNS.SelectedItem);
                     w.WriteLine("Destination Number System: {0}", DestinationNS.SelectedItem);
@@ -128,6 +134,7 @@ namespace GroupTaskCalculator
                         w.WriteLine(ex.Message);
                         MessageBox.Show(ex.Message);
                     }
+                    w.WriteLine("\n");
                 }
             }
         }
