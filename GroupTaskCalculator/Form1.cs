@@ -125,9 +125,6 @@ namespace GroupTaskCalculator
                     {
                         w.WriteLine(ex.Message);
                         MessageBox.Show(ex.Message);
-
-                        InitialNumber.Text = InitialNumber.Text.Replace("  "," ").Replace("-", "").Replace(",", "").Replace(".", "");
-                        InitialNumber.SelectionStart = InitialNumber.TextLength-1;
                     }
                 }
             }
