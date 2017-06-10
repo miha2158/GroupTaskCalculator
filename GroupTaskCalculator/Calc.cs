@@ -32,7 +32,7 @@ namespace GroupTaskCalculator
 
             if (_entry.IndexOf(',') != _entry.LastIndexOf(',')
             ) // ѕроверка на то, что есть только одна зап€та€ или еЄ нет вообще
-                throw new Exception("¬озможна только одна зап€та€ в числе!");
+                throw new Exception("¬озможен только один раздел€ющий знак в числе!");
 
             if (_entry.LastIndexOf('-') != -1) // ѕроверка на то, что есть только один минус или его нет вообще
                 if (_entry.LastIndexOf('-') != 0)
