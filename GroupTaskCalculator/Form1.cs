@@ -102,9 +102,11 @@ namespace GroupTaskCalculator
             }
         }
 
+        private string log = "programme.log.txt";
+
         private void DoAction_Click(object sender, EventArgs e)
         {
-            using (var fs = new FileStream("programme.log.txt", FileMode.OpenOrCreate))
+            using (var fs = new FileStream(log, FileMode.OpenOrCreate))
             {
                 fs.Position = fs.Length;
                 using (var w = new StreamWriter(fs, Encoding.Unicode))
@@ -137,6 +139,32 @@ namespace GroupTaskCalculator
                 DoAction.Enabled = true;
                 InitialNumber.ReadOnly = false;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            using (var fs = new FileStream(log, FileMode.OpenOrCreate))
+            {
+                fs.Position = fs.Length;
+                using (var w = new StreamWriter(fs, Encoding.Unicode))
+                {
+                    w.WriteLine("\n");
+                    w.WriteLine("Open time: {0}", DateTime.Now);
+                }
+            }
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var fs = new FileStream(log, FileMode.Create))
+            {
+            }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
