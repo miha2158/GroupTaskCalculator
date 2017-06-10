@@ -135,10 +135,12 @@ namespace GroupTaskCalculator
         private void superModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeItems(PossibleNS1);
+            toolStripMenuItem1.Text = '\x2795'.ToString();
         }
         private void regularModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeItems(PossibleNS1);
+            toolStripMenuItem1.Text = " ";
         }
     }
 }
