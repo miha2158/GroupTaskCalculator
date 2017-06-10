@@ -120,6 +120,8 @@ namespace GroupTaskCalculator
             var proc = new Process();
             proc.StartInfo = new ProcessStartInfo(logpath);
             proc.Start();
+            Close();
+            Dispose();
         }
 
         private void ChangeItems(object[] items)
