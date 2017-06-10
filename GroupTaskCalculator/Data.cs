@@ -28,34 +28,34 @@ namespace GroupTaskCalculator
             }
             else firstPart = inputValue.value;
             firstPart = firstPart.Trim('-');
-            double outputValue=0;
+            decimal outputValue=0;
 
             #region Перевод в десятичную
 
             for (int i = 0; i < firstPart.Length; i++)
             {
-                int val = alph.IndexOf(firstPart[i]);
-                outputValue += val*Math.Pow(inputValue.numSystem, firstPart.Length - i - 1);
+                ulong val = (ulong)alph.IndexOf(firstPart[i]);
+                outputValue += val*(decimal)Math.Pow(inputValue.numSystem, firstPart.Length - i - 1);
             }
 
             for (int i = 0; i < secondPart.Length; i++)
             {
-                double val = alph.IndexOf(secondPart[i]);
-                outputValue += val * Math.Pow(inputValue.numSystem, -1*(i+1));
+                decimal val = alph.IndexOf(secondPart[i]);
+                outputValue += val * (decimal)Math.Pow(inputValue.numSystem, -1*(i+1));
             }
 
             #endregion Перевод в десятичную
 
             #region Перевод в target систему
 
-            int intPart =(int)outputValue;
-            double doublePart = outputValue - intPart;
+            ulong intPart =(ulong)outputValue;
+            decimal doublePart = outputValue - intPart;
 
             string outputStringIntPart="";
-            while (intPart>= outputCC)
+            while (intPart>= (ulong)outputCC)
             {
-                outputStringIntPart = alph[intPart% outputCC]+outputStringIntPart;
-                intPart /= outputCC;
+                outputStringIntPart = alph[(int)(intPart% (ulong)outputCC)]+outputStringIntPart;
+                intPart /= (ulong)outputCC;
             }
 
             outputStringIntPart = intPart + outputStringIntPart;
@@ -63,7 +63,7 @@ namespace GroupTaskCalculator
 
 
             string outputStringdoublePart = "";
-            while (doublePart != 0.0 && outputStringdoublePart.Length<10 )
+            while (doublePart != 0.0m && outputStringdoublePart.Length<10 )
             {
                 doublePart *= outputCC;
                 outputStringdoublePart += alph[(int)doublePart];
