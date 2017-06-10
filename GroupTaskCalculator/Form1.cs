@@ -13,7 +13,7 @@ namespace GroupTaskCalculator
 {
     public partial class Form1: Form
     {
-        bool logged = false;
+        private static readonly object[] PossibleNS = { 2, 3, 8, 9, 10, 16 };
         public Form1()
         {
             InitializeComponent();
@@ -21,8 +21,21 @@ namespace GroupTaskCalculator
             DestinationNS.Items.AddRange(PossibleNS);
             InitialNumber.KeyPress += InitialNumber_KeyPress;
         }
-
-        private static readonly object[] PossibleNS = { 2, 3, 8, 9, 10, 16 };
+        private static readonly string log = "programme.log.txt";
+        private readonly string logpath = Path.GetFullPath(log);
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            using (var fs = new FileStream(log, FileMode.OpenOrCreate))
+            {
+                fs.Position = fs.Length;
+                using (var w = new StreamWriter(fs, Encoding.Unicode))
+                {
+                    w.WriteLine("\n");
+                    w.WriteLine("\n");
+                    w.WriteLine("Open time: {0}", DateTime.Now);
+                }
+            }
+        }
 
         private void InitialNumber_TextChanged(object sender, EventArgs e)
         {
@@ -34,12 +47,10 @@ namespace GroupTaskCalculator
             {
             }
         }
-
         bool IsControl(char c)
         {
             return char.IsControl(c) || new[] { '-', ',', ' ', '.' }.Contains(c);
         }
-
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (InitialNS.SelectedItem == null)
@@ -102,9 +113,15 @@ namespace GroupTaskCalculator
                 DoAction_Click(sender, e);
             }
         }
-
-        private string log = "programme.log.txt";
-
+        
+        private void NS_Selected(object sender, EventArgs e)
+        {
+            if (InitialNS.SelectedIndex != -1 && DestinationNS.SelectedIndex != -1)
+            {
+                DoAction.Enabled = true;
+                InitialNumber.ReadOnly = false;
+            }
+        }
         private void DoAction_Click(object sender, EventArgs e)
         {
             using (var fs = new FileStream(log, FileMode.OpenOrCreate))
@@ -112,12 +129,8 @@ namespace GroupTaskCalculator
                 fs.Position = fs.Length;
                 using (var w = new StreamWriter(fs, Encoding.Unicode))
                 {
-                    if (!logged)
-                    {
-                        logged = true;
-                        w.WriteLine("========== "+DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt")+" ==========");
-                    }
-                    w.WriteLine("--- "+ DateTime.Now.ToString("hh:mm:ss tt") + " ---");
+                    w.WriteLine("\n");
+                    w.WriteLine(DateTime.UtcNow.TimeOfDay);
                     w.WriteLine("Input Number: {0}", InitialNumber.Text);
                     w.WriteLine("Input Number System: {0}", InitialNS.SelectedItem);
                     w.WriteLine("Destination Number System: {0}", DestinationNS.SelectedItem);
@@ -134,30 +147,6 @@ namespace GroupTaskCalculator
                         w.WriteLine(ex.Message);
                         MessageBox.Show(ex.Message);
                     }
-                    w.WriteLine("\n");
-                }
-            }
-        }
-
-        private void NS_Selected(object sender, EventArgs e)
-        {
-            if (InitialNS.SelectedIndex != -1 && DestinationNS.SelectedIndex != -1)
-            {
-                DoAction.Enabled = true;
-                InitialNumber.ReadOnly = false;
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            using (var fs = new FileStream(log, FileMode.OpenOrCreate))
-            {
-                fs.Position = fs.Length;
-                using (var w = new StreamWriter(fs, Encoding.Unicode))
-                {
-                    w.WriteLine("\n");
-                    w.WriteLine("Open time: {0}", DateTime.Now);
                 }
             }
         }
@@ -168,10 +157,12 @@ namespace GroupTaskCalculator
             {
             }
         }
-
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            new OpenFileDialog()
+            {
+                FileName = logpath
+            }.OpenFile();
         }
     }
 }
