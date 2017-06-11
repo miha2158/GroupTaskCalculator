@@ -87,6 +87,9 @@ namespace GroupTaskCalculator
 
             #endregion Перевод в target систему
 
+            if (outputString.Contains(",") && outputString.Length - outputString.IndexOf(',') - 1 > 10)
+                outputString=outputString.Remove(outputString.IndexOf(',') + 11);
+
             if (sign + outputString == "-0")
                 return new Data("0", outputCC);
             return new Data(sign+outputString, outputCC);
