@@ -19,9 +19,9 @@ namespace GroupTaskCalculator
         public Form1()
         {
             InitializeComponent();
-            InitialNS.Items.AddRange(PossibleNS0);
-            DestinationNS.Items.AddRange(PossibleNS0);
-            InitialNumber.KeyPress += InitialNumber_KeyPress;
+            initialNS.Items.AddRange(PossibleNS0);
+            destinationNS.Items.AddRange(PossibleNS0);
+            initialNumber.KeyPress += InitialNumber_KeyPress;
         }
         private static readonly string log = "programme.log.txt";
         private readonly string logpath = Path.GetFullPath(log);
@@ -49,7 +49,6 @@ namespace GroupTaskCalculator
             {
             }
         }
-
         private static char[] cChars = new[] { '-', ',', ' ', '.' };
         private static string Nums = "0123456789abcdef";
         bool IsValid(char c, int NS)
@@ -59,10 +58,10 @@ namespace GroupTaskCalculator
         }
         private void InitialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (InitialNS.SelectedItem == null)
+            if (initialNS.SelectedItem == null)
                 return;
 
-            if (!IsValid(e.KeyChar, (int)InitialNS.SelectedItem))
+            if (!IsValid(e.KeyChar, (int)initialNS.SelectedItem))
                 e.Handled = true;
 
 
@@ -75,10 +74,11 @@ namespace GroupTaskCalculator
 
         private void NS_Selected(object sender, EventArgs e)
         {
-            if (InitialNS.SelectedIndex != -1 && DestinationNS.SelectedIndex != -1)
+            if (initialNS.SelectedIndex != -1 && destinationNS.SelectedIndex != -1)
             {
-                DoAction.Enabled = true;
-                InitialNumber.ReadOnly = false;
+                swapNS.Enabled = true;
+                doAction.Enabled = true;
+                initialNumber.ReadOnly = false;
             }
         }
         private void DoAction_Click(object sender, EventArgs e)
@@ -90,16 +90,16 @@ namespace GroupTaskCalculator
                 {
                     w.WriteLine("\n");
                     w.WriteLine(DateTime.UtcNow.TimeOfDay);
-                    w.WriteLine("Input Number: {0}", InitialNumber.Text);
-                    w.WriteLine("Input Number System: {0}", InitialNS.SelectedItem);
-                    w.WriteLine("Destination Number System: {0}", DestinationNS.SelectedItem);
+                    w.WriteLine("Input Number: {0}", initialNumber.Text);
+                    w.WriteLine("Input Number System: {0}", initialNS.SelectedItem);
+                    w.WriteLine("Destination Number System: {0}", destinationNS.SelectedItem);
                     try
                     {
-                        var p = new Calc((int)InitialNS.SelectedItem, (int)DestinationNS.SelectedItem,
-                            InitialNumber.Text);
+                        var p = new Calc((int)initialNS.SelectedItem, (int)destinationNS.SelectedItem,
+                            initialNumber.Text);
 
-                        DestinationNumber.Text = p.Convert();
-                        w.WriteLine("Result: {0}", DestinationNumber.Text);
+                        destinationNumber.Text = p.Convert();
+                        w.WriteLine("Result: {0}", destinationNumber.Text);
                     }
                     catch (Exception ex)
                     {
@@ -108,6 +108,16 @@ namespace GroupTaskCalculator
                     }
                 }
             }
+        }
+        private void swapNS_Click(object sender, EventArgs e)
+        {
+            initialNumber.Text = destinationNumber.Text;
+            destinationNumber.Clear();
+
+            var i1 = destinationNS.SelectedIndex;
+            var i2 = initialNS.SelectedIndex;
+            destinationNS.SelectedIndex = i2;
+            initialNS.SelectedIndex = i1;
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,10 +137,10 @@ namespace GroupTaskCalculator
 
         private void ChangeItems(object[] items)
         {
-            InitialNS.Items.Clear();
-            InitialNS.Items.AddRange(items);
-            DestinationNS.Items.Clear();
-            DestinationNS.Items.AddRange(items);
+            initialNS.Items.Clear();
+            initialNS.Items.AddRange(items);
+            destinationNS.Items.Clear();
+            destinationNS.Items.AddRange(items);
         }
         private void superModeToolStripMenuItem_Click(object sender, EventArgs e)
         {

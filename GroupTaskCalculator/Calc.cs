@@ -50,6 +50,9 @@ namespace GroupTaskCalculator
             foreach (char c in _entry) // Проверка на верную СС
                 if ((alphabet.IndexOf(c) > _inputNumSyst - 1 || alphabet.IndexOf(c) == -1) & c != ','& c != '-')
                     throw new Exception("Одна из цифр не соответствует введённой системе счисления (" + c + ")!");
+
+            _entry = _entry.Contains(",") ? _entry.Trim('0').Trim(',') : _entry.TrimStart('0');
+            if (_entry.Length == 0) _entry = "0";
         }
 
         public string Convert()
