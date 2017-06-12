@@ -45,7 +45,7 @@ namespace GroupTaskCalculator
             this.initialNS.Location = new System.Drawing.Point(12, 45);
             this.initialNS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.initialNS.Name = "initialNS";
-            this.initialNS.Size = new System.Drawing.Size(140, 25);
+            this.initialNS.Size = new System.Drawing.Size(140, 29);
             this.initialNS.TabIndex = 0;
             this.initialNS.SelectedIndexChanged += new System.EventHandler(this.NS_Selected);
             // 
@@ -56,7 +56,7 @@ namespace GroupTaskCalculator
             this.destinationNS.Location = new System.Drawing.Point(15, 168);
             this.destinationNS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.destinationNS.Name = "destinationNS";
-            this.destinationNS.Size = new System.Drawing.Size(140, 25);
+            this.destinationNS.Size = new System.Drawing.Size(140, 29);
             this.destinationNS.TabIndex = 2;
             this.destinationNS.SelectedIndexChanged += new System.EventHandler(this.NS_Selected);
             // 
@@ -88,7 +88,7 @@ namespace GroupTaskCalculator
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 17);
+            this.label1.Size = new System.Drawing.Size(33, 22);
             this.label1.TabIndex = 8;
             this.label1.Text = "Из";
             // 
@@ -97,7 +97,7 @@ namespace GroupTaskCalculator
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 17);
+            this.label2.Size = new System.Drawing.Size(186, 22);
             this.label2.TabIndex = 7;
             this.label2.Text = "Системы счисления";
             // 
@@ -106,7 +106,7 @@ namespace GroupTaskCalculator
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 197);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 17);
+            this.label3.Size = new System.Drawing.Size(181, 22);
             this.label3.TabIndex = 6;
             this.label3.Text = "Систему счисления";
             // 
@@ -115,7 +115,7 @@ namespace GroupTaskCalculator
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 147);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 17);
+            this.label4.Size = new System.Drawing.Size(23, 22);
             this.label4.TabIndex = 5;
             this.label4.Text = "В";
             // 
@@ -135,19 +135,20 @@ namespace GroupTaskCalculator
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(300, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(256, 17);
+            this.label5.Size = new System.Drawing.Size(326, 22);
             this.label5.TabIndex = 2;
             this.label5.Text = "Точность ~ 10 знаков после запятой";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(568, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(568, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -157,20 +158,20 @@ namespace GroupTaskCalculator
             this.clearToolStripMenuItem,
             this.viewToolStripMenuItem});
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.logToolStripMenuItem.Text = "Лог";
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
             this.clearToolStripMenuItem.Text = "Очистить";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
             this.viewToolStripMenuItem.Text = "Открыть";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
@@ -180,20 +181,22 @@ namespace GroupTaskCalculator
             this.regularModeToolStripMenuItem,
             this.superModeToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(66, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(79, 24);
             this.toolStripMenuItem1.Text = "Режимы";
             // 
             // regularModeToolStripMenuItem
             // 
+            this.regularModeToolStripMenuItem.Checked = true;
+            this.regularModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.regularModeToolStripMenuItem.Name = "regularModeToolStripMenuItem";
-            this.regularModeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.regularModeToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.regularModeToolStripMenuItem.Text = "Обычный режим";
             this.regularModeToolStripMenuItem.Click += new System.EventHandler(this.regularModeToolStripMenuItem_Click);
             // 
             // superModeToolStripMenuItem
             // 
             this.superModeToolStripMenuItem.Name = "superModeToolStripMenuItem";
-            this.superModeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.superModeToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.superModeToolStripMenuItem.Text = "Супер режим";
             this.superModeToolStripMenuItem.Click += new System.EventHandler(this.superModeToolStripMenuItem_Click);
             // 

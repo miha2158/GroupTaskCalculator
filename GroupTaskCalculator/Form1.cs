@@ -111,8 +111,9 @@ namespace GroupTaskCalculator
         }
         private void swapNS_Click(object sender, EventArgs e)
         {
+            var s = initialNumber.Text;
             initialNumber.Text = destinationNumber.Text;
-            destinationNumber.Clear();
+            destinationNumber.Text = s;
 
             var i1 = destinationNS.SelectedIndex;
             var i2 = initialNS.SelectedIndex;
@@ -145,12 +146,14 @@ namespace GroupTaskCalculator
         private void superModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeItems(PossibleNS1);
-            toolStripMenuItem1.Text = '\x2795'.ToString();
+            superModeToolStripMenuItem.CheckState = CheckState.Checked;
+            regularModeToolStripMenuItem.CheckState = CheckState.Unchecked;
         }
         private void regularModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeItems(PossibleNS1);
-            toolStripMenuItem1.Text = " ";
+            regularModeToolStripMenuItem.CheckState = CheckState.Checked;
+            superModeToolStripMenuItem.CheckState = CheckState.Unchecked;
         }
     }
 }
